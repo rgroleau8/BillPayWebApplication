@@ -34,7 +34,7 @@ namespace BillPayWebApplication.Controllers
 
             if (billInfo == null)
             {
-                //
+                return PartialView("~/Views/Shared/_BillingNotFound.cshtml");
             }
 
             var options = new SessionCreateOptions
