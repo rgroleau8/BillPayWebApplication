@@ -59,7 +59,6 @@ namespace BillPayWebApplication.Controllers
                 return PartialView("~/Views/Shared/_BillingNotFound.cshtml");//Bill not found
             }
 
-
             return PartialView("~/Views/Shared/_BillingDetails.cshtml", billInfo);
 
         }

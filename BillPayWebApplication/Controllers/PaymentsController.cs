@@ -28,7 +28,7 @@ namespace BillPayWebApplication.Controllers
         public IActionResult Create(string BillingID, string AccountNumber)
         {
 
-            var domain = "http://localhost:4242";
+            var domain = "https://rdgbillingapp.azurewebsites.net/";
 
             BillInformation billInfo = db.GetBill(BillingID, AccountNumber);
 
