@@ -1,0 +1,113 @@
+﻿@model BillPayData.Models.BillInformation
+
+@{
+    Layout = null;
+}
+
+<head>
+
+
+</head>
+
+<h3>Bill Details</h3>
+
+<body>
+    <form asp-action="Create" asp-controller="Payments" asp-method="post">
+
+        <div>
+        <table class="table table-dark table-bordered table-hover table-responsive">
+            <tr>
+                <th></th>
+                <th>BillingID</th>
+                <th>Account Number</th>
+                <th>Provider</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            <tbody class="table">
+                <tr>
+                    <td>
+                        <i class="bx bxs-plus-circle bx-tada" id="PlusMinus"></i>
+
+                        <div style="display:none" id="hiddenTable">
+                            <table cellpadding="0" cellspacing="0" class="ChildGrid">
+                                <tr>
+                                    <th>Date Of Service:</th>
+                                </tr>
+                                <tr>
+                                    <td>@Model.VisitInformation.DateOfService</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" class="ChildGrid">
+                                <tr>
+                                    <th>Location:</th>
+                                </tr>
+                                <tr>
+                                    <td>Location Name: @Model.VisitInformation.Location.LocationName</td>     
+                                </tr>
+                                <tr>
+                                     <td>Location Address: @Model.VisitInformation.Location.LocationAddress</td>
+                                </tr>
+                               
+                            </table>
+                            <table cellpadding="0" cellspacing="0" class="ChildGrid">
+                                <tr>
+                                    <th>Visit Type:</th>
+                                </tr>
+                                <tr>
+                                    <td>Type: @Model.VisitInformation.VisitType.Type</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" class="ChildGrid">
+                                <tr>
+                                    <th>Provider:</th>
+                                </tr>
+                                <tr>
+                                    <td>Name: @Model.VisitInformation.Provider.ProviderName</td>
+                                </tr>
+                                <tr>
+                                    <td>Speciality: @Model.VisitInformation.Provider.Speciality.SpecialityName</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                    <input type="hidden" asp-for="BillingID" />
+                    <td>@Model.BillingID</td>
+                    <input type="hidden" asp-for="AccountNumber" />
+                    <td>@Model.AccountNumber</td>
+                    <td>@Model.VisitInformation.Provider.ProviderName</td>
+                    <td>@Model.Amount</td>
+                    <td>@Model.PayStatus</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @if (Model.PayStatus == "Unpaid")
+        {
+            <input type="submit" value="Pay Bill" id="PayBill" >
+        }
+
+    </div>
+
+    </form>
+    
+
+    <script type="text/javascript" src="~/js/PatientPortal/Billing Details/PlusMinus.js"></script>
+
+
+    <script>
+
+$(document).ready(function() {
+
+    //Displays the hidden table with additional information and switches icon between plus and minus
+    OnPlusMinusClick();
+
+})
+
+ 
+
+    </script>
+
+
+
+</body>

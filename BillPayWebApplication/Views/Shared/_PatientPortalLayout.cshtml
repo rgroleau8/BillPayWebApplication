@@ -1,0 +1,90 @@
+﻿@{
+}
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <link href="~/css/PatientPortal/Layout/SideBarStyling.css" rel="stylesheet" />
+        <link id="sidebar" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
+        <link href="~/css/PatientPortal/Layout/PartialPageInsertArea.css" rel="stylesheet" />
+        <link href="~/css/PatientPortal/Layout/NavLinkStyling.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    </head>
+
+    
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle">
+            <i class='bx bx-menu' id="header-toggle"></i>
+        </div>
+        <partial name="_LoginPartial"/>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Patient Portal</span> </a>
+               
+                <a href="#" class="nav_link" id="Alerts"> <i class='bx bx-building-house nav_icon'></i> <span class="nav_name">Alerts</span> </a>
+                 <a href="#" class="nav_link" id="Billing"> <i class='bx bx-building-house nav_icon'></i> <span class="nav_name">Billing</span> </a>
+                        
+               
+            </div>
+            <a href="@Url.Action("Index", "Home")" class="nav_link"> <i class='bx bx-building-house nav_icon'></i> <span class="nav_name">Back To Home</span> </a>
+            @*<a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>*@
+        </nav>
+    </div>
+
+    <!--handles all of the events pertaining to opening, closing, and changing the active nav link-->
+    <script src="~/js/PatientPortal/Layout/SideBarEventHandler.js"></script>
+    
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <div id="insert">
+        
+    </div>
+
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     <script type="text/javascript">
+$(function() {
+    $('#Alerts').click(function() {
+        
+        $.ajax({
+            url: '@Url.Action("Alerts","PatientPortal")',
+            type: 'GET',           
+            success: function(partialView) {
+                $('#insert').html(partialView);
+            }
+        })
+    })
+})
+
+     </script>
+
+     <script type="text/javascript">
+         $(function() {
+    $('#Billing').click(function() {
+     
+        $.ajax({
+            url: '@Url.Action("BillingSearch","PatientPortal")',
+            type: 'GET',           
+            success: function(partialView) {
+                $('#insert').html(partialView);
+            }
+        })
+    })
+})
+     </script>
+
+     @await RenderSectionAsync("Scripts", required: false)
+
+    </body>
+
+
+</html>
+

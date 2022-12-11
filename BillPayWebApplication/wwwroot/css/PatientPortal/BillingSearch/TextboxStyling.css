@@ -1,0 +1,11 @@
+﻿.TextBox {
+    width: 300px;
+    height: 50px;
+    border: 2px solid rgb(173, 204, 204);
+    box-shadow: 0 0 27px rgb(204, 204, 204) inset;
+    transition: 500ms all ease;
+    padding: 3px 3px 3px 3px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
+}

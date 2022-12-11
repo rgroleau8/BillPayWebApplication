@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BillPayData.Models
+{
+    public class VisitInfo
+    {
+
+        public VisitInfo()
+        {
+            this.Location = new Location();
+            this.VisitType = new TypeOfVisit();
+            this.Provider = new Provider();
+        }
+        public int Id { get; set; }
+
+        public int LocationID { get; set; }
+
+        public int VisitTypeID { get; set; }
+
+        public int ProviderID { get; set; }
+
+        public string DateOfService { get; set; }
+
+        public Location Location { get; set; }
+
+        public TypeOfVisit VisitType { get; set; }
+
+        public Provider Provider { get; set; }
+
+    }
+}

@@ -1,0 +1,58 @@
+﻿@model BillPayData.Models.BillInformation
+
+@{
+    Layout = null;
+}
+
+<head>
+    <link href="~/css/PatientPortal/BillingSearch/TextboxStyling.css" rel="stylesheet" />
+    
+</head>
+
+<h2>Bill Lookup System</h2>
+<p>To find your bill:<br /></p>
+<p>Please enter the information below exactly as it appears on your bill!</p>
+
+<body>
+
+    <div class="form-group row">
+     <input asp-for="BillingID" class="form-control TextBox" type="text" placeholder="Billing Number" id="BillingID">
+    </div>
+
+    <div class="form-group row">
+     <input asp-for="AccountNumber" class="form-control TextBox" type="text" placeholder="Account Number" id="AccountNumber" />
+    </div>
+   
+    <div class="form-group">
+        <input type="button" value="Find My Bill" id="FindBill"/>
+    </div>
+   
+
+     <div id="billOutput">
+         
+    </div>
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+    $("#FindBill").click(function() {
+
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("BillingDetails","PatientPortal")',
+            data: {'BillingID' : $('#BillingID').val(), 'AccountNumber' : $('#AccountNumber').val()},
+            success: function(partialView) {
+                $('#billOutput').html(partialView);
+            }
+         
+        })
+    })
+})
+
+</script>
+
+</body>
