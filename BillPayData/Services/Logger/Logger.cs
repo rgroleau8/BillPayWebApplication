@@ -8,9 +8,9 @@ namespace BillPayData.Services.Logger
 {
     public class Logger : ILogger
     {
-        public void Log(string messaage)
+        public void Log(string message)
         {
-            Console.WriteLine(messaage);
+            Console.WriteLine(message);
         }
     }
 }

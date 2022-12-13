@@ -8,6 +8,6 @@ namespace BillPayData.Services
 {
     public interface ILogger
     {
-        void Log(string messaage);
+        void Log(string message);
     }
 }
