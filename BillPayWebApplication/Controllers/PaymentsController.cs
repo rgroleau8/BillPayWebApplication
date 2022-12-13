@@ -28,13 +28,13 @@ namespace BillPayWebApplication.Controllers
         public IActionResult Create(string BillingID, string AccountNumber)
         {
 
-            var domain = "http://localhost:4242";
+            var domain = "https://rdgbillingapp.azurewebsites.net/";
 
             BillInformation billInfo = db.GetBill(BillingID, AccountNumber);
 
             if (billInfo == null)
             {
-                //
+                return PartialView("~/Views/Shared/_BillingNotFound.cshtml");
             }
 
             var options = new SessionCreateOptions
@@ -46,7 +46,7 @@ namespace BillPayWebApplication.Controllers
                     {
                         PriceData = new SessionLineItemPriceDataOptions
                         {
-                            UnitAmount = (int)(billInfo.Amount * 100),
+                            UnitAmount = (int)(billInfo.Amount * 100), //translates bill amount to pennies for stripe
                             Currency = "usd",
 
                             ProductData = new SessionLineItemPriceDataProductDataOptions
@@ -60,6 +60,7 @@ namespace BillPayWebApplication.Controllers
 
                 PaymentIntentData = new SessionPaymentIntentDataOptions
                 {
+                    //This metadata is sent to the checkout session and hooked back into the application in StripeWebHookController after the bill succeeds or fails
                     Metadata = new Dictionary<string, string>
                     {
                         { "BillingID", billInfo.BillingID },
@@ -79,7 +80,7 @@ namespace BillPayWebApplication.Controllers
 
         Response.Headers.Add("Location", session.Url);
 
-        return new StatusCodeResult(303);
+        return new StatusCodeResult(303); //retuns the stripe checkout session created
 
 
         }
