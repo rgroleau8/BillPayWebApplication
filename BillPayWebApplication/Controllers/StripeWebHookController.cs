@@ -11,10 +11,13 @@ namespace BillPayWebApplication.Controllers
     {
         private IBillingData db;
         private IOptions<MySettingsModel> appSettings;
-        public StripeWebHookController(IBillingData db, IOptions<MySettingsModel> app)
+        private ILog logger;
+
+        public StripeWebHookController(IBillingData db, IOptions<MySettingsModel> app, ILog logger)
         {
             this.appSettings = app;
             this.db = db;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -37,7 +40,7 @@ namespace BillPayWebApplication.Controllers
 
                     if (db.UpdateBillStatus(BillingID, AccountNumber, "Paid") == false)
                     {
-                        //log
+                        logger.Log($"Failed to update bill in database with BillingID: {BillingID} and Account Number: {AccountNumber}");
                     }
                 }
                 else if (stripeEvent.Type == Events.PaymentIntentPaymentFailed)
@@ -46,7 +49,7 @@ namespace BillPayWebApplication.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("Unhandled event type: {0}", stripeEvent.Type);
+                    logger.Log($"Unhandled event type: {stripeEvent.Type}");
                 }
 
                 return Ok();
