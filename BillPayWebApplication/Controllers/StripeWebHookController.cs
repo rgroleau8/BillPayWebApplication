@@ -49,7 +49,7 @@ namespace BillPayWebApplication.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("Unhandled event type: {0}", stripeEvent.Type);
+                    logger.Log($"Unhandled event type: {stripeEvent.Type}");
                 }
 
                 return Ok();
