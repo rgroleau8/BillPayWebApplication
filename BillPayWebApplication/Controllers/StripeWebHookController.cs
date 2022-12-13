@@ -11,6 +11,7 @@ namespace BillPayWebApplication.Controllers
     {
         private IBillingData db;
         private IOptions<MySettingsModel> appSettings;
+
         public StripeWebHookController(IBillingData db, IOptions<MySettingsModel> app)
         {
             this.appSettings = app;

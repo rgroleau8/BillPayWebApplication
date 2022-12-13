@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BillPayData.Services
 {
-    public interface ILogger
+    public interface ILog
     {
         void Log(string message);
     }

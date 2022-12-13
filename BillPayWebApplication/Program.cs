@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<BillPayData.Services.IBillingData, BillPayData.Services.AzureBillingData>();
 
-builder.Services.AddScoped<BillPayData.Services.ILogger, BillPayData.Services.Logger>();
+builder.Services.AddScoped<BillPayData.Services.ILog, BillPayData.Services.Logger>();
 
 IConfiguration configuration = builder.Configuration;
 
