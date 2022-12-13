@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BillPayData.Services.Logger
+namespace BillPayData.Services
 {
     public class Logger : ILogger
     {
