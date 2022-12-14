@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BillPayData.Models
+namespace BillPayData.Models.Bill
 {
     public class VisitInfo
     {
 
         public VisitInfo()
         {
-            this.Location = new Location();
-            this.VisitType = new TypeOfVisit();
-            this.Provider = new Provider();
+            Location = new Location();
+            VisitType = new TypeOfVisit();
+            Provider = new Provider();
         }
         public int Id { get; set; }
 

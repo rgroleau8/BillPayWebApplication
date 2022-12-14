@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BillPayData.Models
+namespace BillPayData.Models.Bill
 {
     public class Provider
     {
         public Provider()
         {
-            this.Speciality = new Speciality();
+            Speciality = new Speciality();
         }
         public string ProviderID { get; set; }
 
