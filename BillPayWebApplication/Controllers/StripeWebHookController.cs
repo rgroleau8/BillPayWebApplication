@@ -2,8 +2,7 @@
 using Stripe;
 using BillPayData.Services;
 using Microsoft.Extensions.Options;
-using BillPayData.Models;
-
+using BillPayData.Models.Settings;
 
 namespace BillPayWebApplication.Controllers
 {

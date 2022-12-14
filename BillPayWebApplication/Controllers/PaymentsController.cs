@@ -6,6 +6,7 @@ using BillPayData.Services;
 using System.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using BillPayData.Models.Settings;
 
 namespace BillPayWebApplication.Controllers
 {

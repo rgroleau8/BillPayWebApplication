@@ -1,4 +1,6 @@
 ﻿using BillPayData.Models;
+using BillPayData.Models.Bill;
+using BillPayData.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

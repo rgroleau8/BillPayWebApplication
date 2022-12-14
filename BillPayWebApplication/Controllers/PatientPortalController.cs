@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using BillPayData.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
+using BillPayData.Models.Settings;
 
 namespace BillPayWebApplication.Controllers
 {
@@ -16,7 +17,7 @@ namespace BillPayWebApplication.Controllers
         {
             this.db = db;
             this.appSettings = app;
-            BillPayData.SQLCommands.SQLConnectionStrings.BillInformationConnString = appSettings.Value.BillInfoDB;
+            
             
         }
 
