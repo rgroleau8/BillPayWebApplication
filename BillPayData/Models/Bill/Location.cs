@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BillPayData.Models
+namespace BillPayData.Models.Bill
 {
     public class Location
     {
