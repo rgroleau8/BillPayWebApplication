@@ -5,11 +5,10 @@ namespace BillPayData.SQLCommands
 {
     public static class SqlUpdate
     {
-        static string conn_string = SQLConnectionStrings.BillInformationConnString;
-
-        public static void UpdateBillStatus(string BillingID, string AccountNumber, string PayStatus)
+        
+        public static void UpdateBillStatus(string BillingID, string AccountNumber, string PayStatus, string ConnString)
         {
-            using (SqlConnection con = new SqlConnection(conn_string))
+            using (SqlConnection con = new SqlConnection(ConnString))
             {
                 con.Open();
 

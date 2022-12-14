@@ -2,17 +2,19 @@
 using System.Data.SqlClient;
 using System.Data;
 using BillPayData.SQLCommands;
-
+using Microsoft.Extensions.Options;
 
 namespace BillPayData.Services
 {
     public class AzureBillingData : IBillingData
     {
 
+        private IOptions<MySettingsModel> appSettings;
+
         public BillInformation GetBill(string BillingID, string AccountNumber)
         {
 
-            DataTable queryResults = SqlSelect.QueryAllBillInfo(BillingID, AccountNumber);
+            DataTable queryResults = SqlSelect.QueryAllBillInfo(BillingID, AccountNumber, appSettings.Value.BillInfoDB);
 
             BillInformation billInfo = new BillInformation();
 
@@ -40,10 +42,10 @@ namespace BillPayData.Services
         public bool UpdateBillStatus(string BillingID, string AccountNumber, string PayStatus)
         {
 
-            if (SqlSelect.ValidateBillExists(BillingID, AccountNumber) == false)
+            if (SqlSelect.ValidateBillExists(BillingID, AccountNumber, appSettings.Value.BillInfoDB) == false)
                 return false;
 
-            SqlUpdate.UpdateBillStatus(BillingID, AccountNumber, PayStatus);
+            SqlUpdate.UpdateBillStatus(BillingID, AccountNumber, PayStatus, appSettings.Value.BillInfoDB);
 
             return true;
         }
