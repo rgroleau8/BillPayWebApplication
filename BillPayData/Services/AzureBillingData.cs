@@ -2,12 +2,16 @@
 using System.Data.SqlClient;
 using System.Data;
 using BillPayData.SQLCommands;
-
+using Microsoft.Extensions.Options;
 
 namespace BillPayData.Services
 {
     public class AzureBillingData : IBillingData
     {
+
+        private IOptions<MySettingsModel> appSettings;
+
+
 
         public BillInformation GetBill(string BillingID, string AccountNumber)
         {
