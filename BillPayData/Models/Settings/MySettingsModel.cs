@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BillPayData.Models.Settings
+namespace BillPayData.Models
 {
     public class MySettingsModel
     {

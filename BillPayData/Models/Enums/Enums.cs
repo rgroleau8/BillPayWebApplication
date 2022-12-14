@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BillPayData.Models.Enums
+namespace BillPayData.Models
 {
     public class Enums
     {
