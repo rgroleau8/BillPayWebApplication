@@ -6,8 +6,6 @@ namespace BillPayData.SQLCommands
     public static class SqlSelect
     {
 
-        
-
         public static DataTable QueryAllBillInfo(string BillingID, string AccountNumber, string ConnString)
         {
            
