@@ -6,14 +6,14 @@ namespace BillPayData.SQLCommands
     public static class SqlSelect
     {
 
-        static string conn_string = SQLConnectionStrings.BillInformationConnString;
+        
 
-        public static DataTable QueryAllBillInfo(string BillingID, string AccountNumber)
+        public static DataTable QueryAllBillInfo(string BillingID, string AccountNumber, string ConnString)
         {
            
             DataTable output = new DataTable();
 
-            using (SqlConnection con = new SqlConnection(conn_string))
+            using (SqlConnection con = new SqlConnection(ConnString))
             {
                 using (SqlCommand cmd = new SqlCommand("", con))
                 {
@@ -42,11 +42,11 @@ namespace BillPayData.SQLCommands
             return output;
         }
 
-        public static bool ValidateBillExists(string BillingID, string AccountNumber)
+        public static bool ValidateBillExists(string BillingID, string AccountNumber, string ConnString)
         {
             bool output = false;
 
-            using (SqlConnection con = new SqlConnection(conn_string))
+            using (SqlConnection con = new SqlConnection(ConnString))
             {
                 con.Open();
 
